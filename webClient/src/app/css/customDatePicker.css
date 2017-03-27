@@ -1,0 +1,430 @@
+/*.box {
+    color: #fe33ac;
+    border-color: #fdcdea
+}
+.box div {
+    -webkit-box-shadow: 0 0 5px rgba(0,0,0,.3);
+    box-shadow: 0 0 5px rgba(0,0,0,.3)
+}*/
+.mydrp .headerclearbtn, .mydrp .selection, .mydrp .weekdaytitle {
+    overflow: hidden;
+    white-space: nowrap
+}
+.mydrp {
+    min-width: 100px;
+    border-radius: 2px;
+    line-height: 1;
+    display: inline-block;
+    position: relative
+}
+.mydrp * {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0
+}
+.mydrp .selector {
+    margin-top: 2px;
+    margin-left: -1px;
+    position: absolute;
+    width: 210px;
+    padding: 1px;
+    border-radius: 2px;
+    background-color: #CCC;
+    z-index: 100;
+    animation: selectorfadein .1s
+}
+@keyframes selectorfadein {
+from {
+opacity:0
+}
+to {
+    opacity: 1
+}
+}
+.mydrp .selectorarrow {
+    background: #FFF;
+    border: 1px solid #CCC;
+    margin-top: 12px;
+    padding: 0
+}
+.mydrp .selectorarrow:after, .mydrp .selectorarrow:before {
+    bottom: 100%;
+    border: solid transparent;
+    content: "";
+    height: 0;
+    width: 0;
+    position: absolute
+}
+.mydrp .selectorarrow:after {
+    border-color: rgba(250,250,250,0);
+    border-bottom-color: #FFF;
+    border-width: 6px;
+    margin-left: -10px
+}
+.mydrp .selectorarrow:before {
+    border-color: rgba(204,204,204,0);
+    border-bottom-color: #CCC;
+    border-width: 7px;
+    margin-left: -11px
+}
+.mydrp .selectorarrowleft:after, .mydrp .selectorarrowleft:before {
+    left: 24px
+}
+.mydrp .selectorarrowright:after, .mydrp .selectorarrowright:before {
+    left: 200px
+}
+.mydrp .alignselectorright {
+    right: -1px
+}
+.mydrp .selectiongroup {
+    position: relative;
+    display: table;
+    border: none;
+    border-spacing: 0;
+    background-color: #FFF
+}
+.mydrp .selection {
+    background-color: #FFF;
+    display: table-cell;
+    position: absolute;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 0 64px 0 4px;
+    text-overflow: ellipsis;
+    text-align: center
+}
+.mydrp .invaliddaterange, .mydrp .invalidmonth, .mydrp .invalidyear {
+    background-color: #F1DEDE
+}
+.mydrp ::-ms-clear {
+display:none
+}
+.mydrp .selbtngroup {
+    position: relative;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 1%;
+    display: table-cell;
+    font-size: 0
+}
+.mydrp .btnclear, .mydrp .btnpicker {
+    height: 100%;
+    width: 30px;
+    border: none;
+    border-left: 1px solid #CCC;
+    padding: 0;
+    outline: 0;
+    font: inherit;
+    -moz-user-select: none
+}
+.mydrp .btnclearenabled, .mydrp .btnpickerenabled {
+    cursor: pointer
+}
+.mydrp .btncleardisabled, .mydrp .btnpickerdisabled {
+    cursor: not-allowed
+}
+.mydrp .btnclear, .mydrp .btnpicker, .mydrp .footerbtn, .mydrp .headerclearbtn {
+    background: #FFF
+}
+.mydrp .header {
+    width: 100%;
+    height: 30px;
+    background-color: #FFF
+}
+.mydrp .header td {
+    vertical-align: middle;
+    border: none;
+    line-height: 0
+}
+.mydrp .header td:nth-child(1) {
+    padding-left: 4px
+}
+.mydrp .header td:nth-child(2) {
+    text-align: center
+}
+.mydrp .header td:nth-child(3) {
+    padding-right: 4px
+}
+.mydrp .titlearea {
+    text-align: center;
+    background-color: #FFF;
+    display:none;
+}
+.mydrp .titleareatxt {
+    display: table;
+    border-spacing: 0;
+    width: 100%;
+    height: 26px;
+    line-height: 26px;
+    font-size: 12px
+}
+.mydrp .titleareafull {
+    border-bottom: 1px solid #CCC
+}
+.mydrp .titlearealeft, .mydrp .titlearearight {
+    display: table-cell;
+    width: 50%
+}
+.mydrp .titlearealeftenabled {
+    background-color: #FFF;
+    border-right: 1px solid transparent
+}
+.mydrp .titlearearightenabled {
+    background-color: #FFF;
+    border-left: 1px solid transparent
+}
+.mydrp .titlearealeftdisabled {
+    border-bottom: 1px solid #CCC;
+    border-right: 1px solid #CCC;
+    border-bottom-right-radius: 4px
+}
+.mydrp .titlearearightdisabled {
+    border-bottom: 1px solid #CCC;
+    border-left: 1px solid #CCC;
+    border-bottom-left-radius: 4px
+}
+.mydrp .titleareatxtlink:hover {
+    text-decoration: underline;
+    color: #8BDAF4;
+    cursor: pointer
+}
+.mydrp .inline {
+    position: relative;
+    margin-top: -1px
+}
+.mydrp .caltable {
+    table-layout: fixed;
+    width: 100%;
+    background-color: #FFF;
+    font-size: 12px
+}
+.mydrp .caltable, .mydrp .daycell, .mydrp .weekdaytitle {
+    border-collapse: collapse;
+    color: #036;
+    line-height: 1;
+}
+.mydrp .daycell, .mydrp .weekdaytitle {
+    padding: 5px;
+    text-align: center
+}
+.mydrp .weekdaytitle {
+    background-color: #f2f2f2;
+    font-size: 11px;
+    font-weight: 700;
+    vertical-align: middle;
+    max-width: 36px;
+    color:#000;
+    line-height:2;
+}
+.mydrp .daycell {
+    cursor: pointer;
+    height: 24px
+}
+.mydrp .nextmonth, .mydrp .prevmonth {
+    color: #444
+}
+.mydrp .disabled {
+    cursor: default!important;
+    color: #444!important;
+    background: #FBEFEF!important
+}
+.mydrp .sunday {
+    color: #C30000
+}
+.mydrp .sundayDim {
+    opacity: .5
+}
+.mydrp .currmonth {
+    background-color: #F6F6F6;
+    font-weight: 400
+}
+.mydrp .range {
+    background: #D9F2E6
+}
+.mydrp .currday {
+    /*text-decoration: underline*/
+    font-weight:600;
+}
+.mydrp .selectedday {
+    border: 1px solid #004198;
+    background-color: #8EBFFF!important;
+    border-radius: 2px
+}
+.mydrp .selecteddaygreen {
+    background-color: #28A828!important
+}
+.mydrp .selectmenu {
+    height: 24px;
+    width: 60px
+}
+.mydrp .headerbtncell {
+    background-color: #FFF;
+    cursor: pointer;
+    display: table-cell;
+    vertical-align: middle
+}
+.mydrp .headerbtn, .mydrp .headerlabelbtn {
+    background: #FFF;
+    border: none;
+    height: 18px
+}
+.mydrp .headerbtn {
+    width: 12px
+}
+.mydrp .headerlabelbtn {
+    font-size: 12px
+}
+.mydrp, .mydrp .footerbtn, .mydrp .headerclearbtn, .mydrp .monthinput, .mydrp .yearinput {
+    border: 1px solid #CCC
+}
+.mydrp .btnclear, .mydrp .btnpicker, .mydrp .footerbtn, .mydrp .headerbtn, .mydrp .headerclearbtn, .mydrp .headermonthtxt, .mydrp .headeryeartxt, .mydrp .monthinput, .mydrp .selection, .mydrp .yearinput {
+    color: #000
+}
+.mydrp .footerbtn, .mydrp .headerclearbtn {
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: 11px;
+    height: 22px
+}
+.mydrp .headerclearbtn {
+    min-width: 60px;
+    max-width: 70px;
+    padding: 0 4px
+}
+.mydrp .footerbtn {
+    min-width: 80px
+}
+.mydrp .btndisable {
+    cursor: default;
+    opacity: .5
+}
+.mydrp .footerarea {
+    border-top: 1px solid #CCC;
+    padding: 3px;
+    text-align: center;
+    background-color: #FFF
+}
+.mydrp button::-moz-focus-inner {
+border:0
+}
+.mydrp .headermonthtxt, .mydrp .headeryeartxt {
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 14px;
+    height: 26px;
+    width: 40px;
+    max-width: 40px;
+    overflow: hidden;
+    white-space: nowrap
+}
+.mydrp .btnclear:focus, .mydrp .btnpicker:focus, .mydrp .footerbtn:focus, .mydrp .headerclearbtn:focus {
+    background: #ADD8E6
+}
+.mydrp .headerbtn:focus, .mydrp .monthlabel:focus, .mydrp .yearlabel:focus {
+    color: #ADD8E6;
+    outline: 0
+}
+.mydrp .titlearealeft:focus, .mydrp .titlearearight:focus {
+    text-decoration: underline;
+    outline: 0
+}
+.mydrp .daycell:focus {
+    outline: #CCC solid 1px
+}
+.mydrp .icon-calendar{font-size: 16px} 
+
+.mydrp .icon-cross {
+    font-size: 12px
+}
+.mydrp .icon-left, .mydrp .icon-right {
+    color: #222;
+    font-size: 80%;
+    vertical-align: middle
+}
+.mydrp table {
+    display: table;
+    border-spacing: 0
+}
+.mydrp table td {
+    padding: 0
+}
+.mydrp table, .mydrp td, .mydrp th {
+    border: none
+}
+.mydrp .btnclearenabled:hover, .mydrp .btnpickerenabled:hover, .mydrp .daycell:hover, .mydrp .footerbtnenabled:hover, .mydrp .headerclearbtnenabled:hover {
+    background-color: #8BDAF4
+}
+.mydrp .headerbtn, .mydrp .monthlabel, .mydrp .yearlabel {
+    cursor: pointer
+}
+.mydrp .monthinput, .mydrp .yearinput {
+    width: 40px;
+    height: 22px;
+    text-align: center;
+    font-weight: 700;
+    outline: 0;
+    border-radius: 2px
+}
+.mydrp .headerbtn:hover, .mydrp .monthlabel:hover, .mydrp .yearlabel:hover {
+    color: #8BDAF4
+}
+@font-face {
+    font-family: mydaterangepicker;
+    src: url(data:application/x-font-ttf;charset=utf-8;base64,AAEAAAALAIAAAwAwT1MvMg8SAssAAAC8AAAAYGNtYXDMUczTAAABHAAAAGxnYXNwAAAAEAAAAYgAAAAIZ2x5ZmFQ1q4AAAGQAAABbGhlYWQGZuTFAAAC/AAAADZoaGVhB4IDyQAAAzQAAAAkaG10eBYAAnAAAANYAAAAIGxvY2EBdAE0AAADeAAAABJtYXhwABUAPgAAA4wAAAAgbmFtZQ5R9RkAAAOsAAABnnBvc3QAAwAAAAAFTAAAACAAAwOaAZAABQAAApkCzAAAAI8CmQLMAAAB6wAzAQkAAAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAAAAAAAABAAADmBwPA/8AAQAPAAEAAAAABAAAAAAAAAAAAAAAgAAAAAAADAAAAAwAAABwAAQADAAAAHAADAAEAAAAcAAQAUAAAABAAEAADAAAAAQAg5gDmAuYF5gf//f//AAAAAAAg5gDmAuYF5gf//f//AAH/4xoEGgMaARoAAAMAAQAAAAAAAAAAAAAAAAAAAAAAAQAB//8ADwABAAAAAAAAAAAAAgAANzkBAAAAAAEAAAAAAAAAAAACAAA3OQEAAAAAAQAAAAAAAAAAAAIAADc5AQAAAAAMAEAAAAPAA4AABAAJAA4AEwAYAB0AIgAnACwAMQA2ADsAABMRMxEjFyE1IRUDITUhFQERMxEjJRUzNSMTFTM1IzMVMzUjMxUzNSMBFTM1IzMVMzUjMxUzNSMTFTM1I0Bzc0ADAP0AQAOA/IADDXNz/ZOAgCCAgMCAgMCAgP6AgIDAgIDAgIAggIADAP1AAsBzc3P9c3NzAwD9QALAgMDA/sCAgICAgID/AICAgICAgAJAwMAAAAAAAgBwADADkANQAAQACQAANwEnARcDATcBB+kCp3n9WXl5Aqd5/Vl5MAKnef1ZeQKn/Vl5Aqd5AAABAOAAAAMgA4AAAwAAAQMBJQMgA/3DASADgPyAAcPfAAEA4AAAAyADgAADAAA3EwEF4AMCPf7gAAOA/j3fAAAAAQAAAAEAAF0/BsNfDzz1AAsEAAAAAADRxFAkAAAAANHEUCQAAAAAA8ADgAAAAAgAAgAAAAAAAAABAAADwP/AAAAEAAAAAAADwAABAAAAAAAAAAAAAAAAAAAACAQAAAAAAAAAAAAAAAIAAAAEAABABAAAcAQAAOAEAADgAAAAAAAKABQAHgB6AJYApgC2AAAAAQAAAAgAPAAMAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA4ArgABAAAAAAABAAkAAAABAAAAAAACAAcAcgABAAAAAAADAAkAPAABAAAAAAAEAAkAhwABAAAAAAAFAAsAGwABAAAAAAAGAAkAVwABAAAAAAAKABoAogADAAEECQABABIACQADAAEECQACAA4AeQADAAEECQADABIARQADAAEECQAEABIAkAADAAEECQAFABYAJgADAAEECQAGABIAYAADAAEECQAKADQAvHZzZHBpY2tlcgB2AHMAZABwAGkAYwBrAGUAclZlcnNpb24gMS4wAFYAZQByAHMAaQBvAG4AIAAxAC4AMHZzZHBpY2tlcgB2AHMAZABwAGkAYwBrAGUAcnZzZHBpY2tlcgB2AHMAZABwAGkAYwBrAGUAclJlZ3VsYXIAUgBlAGcAdQBsAGEAcnZzZHBpY2tlcgB2AHMAZABwAGkAYwBrAGUAckZvbnQgZ2VuZXJhdGVkIGJ5IEljb01vb24uAEYAbwBuAHQAIABnAGUAbgBlAHIAYQB0AGUAZAAgAGIAeQAgAEkAYwBvAE0AbwBvAG4ALgAAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=) format('truetype');
+    font-weight: 400;
+    font-style: normal
+}
+.mydrp .icon {
+    font-family: mydaterangepicker;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+.mydrp .icon-calendar:before {
+    content: "\e600"
+}
+.mydrp .icon-cross:before {
+    content:"\e602"
+}
+.mydrp .icon-left:before {
+    content: "\e605"
+}
+.mydrp .icon-right:before {
+    content: "\e607"
+}
+/*  .mydrp .daycell {
+ cursor: pointer;
+ font-size: 12px;
+ height: 24px;
+}
+.mydrp .daycell, .mydrp .weekdaytitle {
+    padding: 1px;
+    text-align: center;
+}
+.mydrp .weekdaytitle {
+    border-collapse: collapse;
+    color: blue;
+    line-height: 2.5;
+}
+.mydrp .caltable {
+    background-color: #fff;
+    font-size: 14px;
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    color: red;
+    line-height: 1.5;
+}
+.mydrp .weekdaytitle {
+    border-collapse: collapse;
+    color: green;
+    line-height: 1.5;
+} */
