@@ -14,12 +14,20 @@ public class TomcatCustomizer implements EmbeddedServletContainerCustomizer {
     private static String mimeTypes[] = {"text/html", "text/plain", "text/xml", "text/css", "text/javascript", "application/javascript"};
 
     @Override
-    public void customize(ConfigurableEmbeddedServletContainer configurableEmbeddedServletContainer) {
+    public void customize(ConfigurableEmbeddedServletContainer servletContainer) {
 
         Compression compression = new Compression();
         compression.setEnabled(true);
 
         compression.setMimeTypes(mimeTypes);
-        configurableEmbeddedServletContainer.setCompression(compression);
+        servletContainer.setCompression(compression);
+        /*
+		    TomcatEmbeddedServletContainerFactory factory = new TomcatEmbeddedServletContainerFactory();
+		    factory.setPort(9000);
+		    factory.setSessionTimeout(10, TimeUnit.MINUTES);
+		    factory.addErrorPages(new ErrorPage(HttpStatus.NOT_FOUND, "/notfound.html"));
+		    return factory;
+         * */
+        
     }
 }

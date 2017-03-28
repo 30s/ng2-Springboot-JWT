@@ -1,5 +1,6 @@
 package com.slk.app.configuration;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
@@ -10,6 +11,9 @@ import org.springframework.retry.backoff.FixedBackOffPolicy;
 import org.springframework.retry.policy.SimpleRetryPolicy;
 import org.springframework.retry.support.RetryTemplate;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
 @EnableRetry
 @Configuration
@@ -45,6 +49,20 @@ public class Configurations {
 
 	        return template;
 	    }
+	   
+//	   @Bean
+//		public FilterRegistrationBean corsFilter() {
+//			UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//			CorsConfiguration config = new CorsConfiguration();
+//			//config.setAllowCredentials(true);
+//			config.addAllowedOrigin("*");
+//			config.addAllowedHeader("*");
+//			config.addAllowedMethod("*");
+//			source.registerCorsConfiguration("/**", config);
+//			FilterRegistrationBean bean = new FilterRegistrationBean(new CorsFilter(source));
+//			//bean.setOrder(0);
+//			return bean;
+//		}
 
 //	@Bean
 //	public org.springframework.data.redis.connection.RedisConnectionFactory redisConnectionFactory() {

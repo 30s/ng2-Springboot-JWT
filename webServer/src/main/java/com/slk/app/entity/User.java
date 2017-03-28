@@ -7,15 +7,16 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="user",schema="CUSTOMERDB")
+@Table(name="CUSTOMERDB.user")
 public class User {
+	
 	@Id
 	@GeneratedValue
-	@Column(name="loginId",unique = true, nullable = false)
-	private String loginId;
-	
 	@Column(name="userId",nullable=false)
 	private int userId;
+	
+	@Column(name="loginId",unique = true, nullable = false)
+	private String loginId;
 	@Column(name="first_name",nullable=false)
 	private String firstName;
 	@Column(name="last_name")

@@ -19,7 +19,8 @@ import org.springframework.security.web.authentication.AuthenticationFailureHand
 import org.springframework.security.web.util.matcher.RequestMatcher;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.slk.app.common.model.WebHttpStatus;
+import com.slk.app.common.model.ErrorCode;
+import com.slk.app.common.model.ErrorResponse;
 import com.slk.app.security.auth.JwtAuthenticationToken;
 import com.slk.app.security.auth.jwt.extractor.TokenExtractor;
 import com.slk.app.security.config.WebSecurityConfig;
@@ -38,7 +39,7 @@ import com.slk.app.security.model.token.RawAccessJwtToken;
 public class JwtTokenAuthenticationProcessingFilter extends AbstractAuthenticationProcessingFilter {
     private final AuthenticationFailureHandler failureHandler;
     private final TokenExtractor tokenExtractor;
-    
+    ObjectMapper mapper=null;
     @Autowired
     public JwtTokenAuthenticationProcessingFilter(AuthenticationFailureHandler failureHandler, 
             TokenExtractor tokenExtractor, RequestMatcher matcher) {
@@ -73,12 +74,12 @@ public class JwtTokenAuthenticationProcessingFilter extends AbstractAuthenticati
         response.setStatus(HttpStatus.UNAUTHORIZED.value());
 		response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         if(failed instanceof JwtExpiredTokenException){
-             ObjectMapper mapper= new ObjectMapper();
-    			//mapper.writeValue(response.getWriter(), new WebHttpStatus()"", ErrorCode.JWT_TOKEN_EXPIRED, HttpStatus.UNAUTHORIZED));
+             mapper= new ObjectMapper();
+    		mapper.writeValue(response.getWriter(), ErrorResponse.of("Token has expired", ErrorCode.JWT_TOKEN_EXPIRED, HttpStatus.UNAUTHORIZED));
     		
         }else if(failed instanceof InvalidJwtToken){
-        	ObjectMapper mapper= new ObjectMapper();
-			//mapper.writeValue(response.getWriter(), ErrorResponse.of("Token has expired", ErrorCode.JWT_TOKEN_EXPIRED, HttpStatus.UNAUTHORIZED));
+        	mapper= new ObjectMapper();
+			mapper.writeValue(response.getWriter(), ErrorResponse.of("Token has expired", ErrorCode.JWT_TOKEN_EXPIRED, HttpStatus.UNAUTHORIZED));
 		
         }
         failureHandler.onAuthenticationFailure(request, response, failed);

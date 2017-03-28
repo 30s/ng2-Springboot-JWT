@@ -16,6 +16,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.CorsUtils;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.slk.app.security.RestAuthenticationEntryPoint;
@@ -53,6 +57,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     
     @Autowired private ObjectMapper objectMapper;
         
+    @Bean
+    CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+       // configuration.setAllowedOrigins(Arrays.asList("*"));
+       // configuration.setAllowedMethods(Arrays.asList("*"));
+      //  configuration.setAllowedHeaders(Arrays.asList("*"));
+        configuration.addAllowedHeader("*");
+        configuration.addAllowedOrigin("*");
+        configuration.addAllowedMethod("*");
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
+    }
+    
     @Bean
     protected LoginProcessingFilter buildLoginProcessingFilter() throws Exception {
         LoginProcessingFilter filter = new LoginProcessingFilter(FORM_BASED_LOGIN_ENTRY_POINT, successHandler, failureHandler, objectMapper);
@@ -92,7 +110,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .csrf().disable() // We don't need CSRF for JWT based authentication
         .exceptionHandling()
         .authenticationEntryPoint(this.authenticationEntryPoint)
-        
+        .and().requestMatcher(CorsUtils::isPreFlightRequest).cors()//this neccessary for cros request
         .and()
             .sessionManagement()
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)

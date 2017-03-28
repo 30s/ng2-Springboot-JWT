@@ -49,7 +49,6 @@ public class LoginAuthenticationProvider implements AuthenticationProvider {
         User user = userService.getUserByLoginId(username).orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
         Md5PasswordEncoder passwordEncoder= new Md5PasswordEncoder();
         String hashPassword=passwordEncoder.encodePassword(password, null);
-       // String encodePassword=MD5Encoder.encode(password.getBytes());
         if (!hashPassword.equals(user.getPassword())) {
             throw new BadCredentialsException("Authentication Failed. Username or Password not valid.");
         }

@@ -13,6 +13,8 @@ import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.slk.app.common.model.ErrorCode;
+import com.slk.app.common.model.ErrorResponse;
 import com.slk.app.security.exceptions.InvalidJwtToken;
 
 /**
@@ -30,7 +32,7 @@ public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
 		response.setContentType(MediaType.APPLICATION_JSON_VALUE);
 		if(ex instanceof InvalidJwtToken && InvalidJwtToken.REFRESH_TOKEN_TYPE.equals(((InvalidJwtToken) ex).getTokenType())){
 			 ObjectMapper mapper= new ObjectMapper();
- 			//mapper.writeValue(response.getWriter(), ErrorResponse.of("refresh token has expired", ErrorCode.REFRESH_TOKEN_EXPIRED, HttpStatus.UNAUTHORIZED));
+ 			mapper.writeValue(response.getWriter(), ErrorResponse.of("refresh token has expired", ErrorCode.REFRESH_TOKEN_EXPIRED, HttpStatus.UNAUTHORIZED));
  		
 		}
 		
