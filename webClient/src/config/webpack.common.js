@@ -29,11 +29,21 @@ module.exports = {
         test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
         loader: 'file-loader?name=assets/[name].[hash].[ext]'
       },
-
-
-      { test: /\.css$/, loader: "style-loader!css-loader" },
-        { test: /\.scss$/,
-            loaders: ['style', 'css', 'postcss', 'sass'] }
+      {
+               test: /\.css$/,
+               include: helpers.root('app'),
+               loader: 'raw-loader'
+      },
+      {
+                // site wide css (excluding all css under the app dir)
+                test: /\.css$/,
+                exclude: helpers.root('app'),
+                loader: ExtractTextPlugin.extract({fallback: 'style-loader', use: 'css-loader?sourceMap'})
+            },
+      {
+        test: /\.scss$/,
+        loaders: ['style', 'css', 'postcss', 'sass']
+      }
     ]
   },
 

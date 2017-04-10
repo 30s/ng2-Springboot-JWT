@@ -7,8 +7,9 @@ import { AppComponent }  from './app.component';
 import { AppRoutingModule }        from './app.routing';
 import { AlertComponent,HighlightDirective1 } from './directives/index';
 import { AuthGuard } from './guards/index';
-import { AlertService, AuthenticationService, UserService ,UtilityService} from './services/index';
+import { AlertService, AuthenticationService, UserService ,UtilityService,AjaxService,ApiXHRBackend} from './services/index';
 import { SharedModule  } from './modules/common/index';
+import { Constants  } from './utils/index';
 import { CustomComponentModules, LoginComponent,RegisterComponent,AdminDashboardComponent } from './modules/index';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 
@@ -36,6 +37,9 @@ import {LocationStrategy, HashLocationStrategy} from '@angular/common';
         AuthenticationService,
         UserService,
         UtilityService,
+        Constants,
+        AjaxService,
+        ApiXHRBackend,
         Location, {provide: LocationStrategy, useClass: HashLocationStrategy}
     ],
     exports:[],

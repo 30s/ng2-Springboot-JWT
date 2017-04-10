@@ -1,4 +1,4 @@
-﻿import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit ,ViewEncapsulation} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { AlertService, AuthenticationService } from '../../services/index';
@@ -7,8 +7,9 @@ import { LoginService } from './login.service';
 @Component({
    // moduleId: module.id,
     templateUrl: './login.component.html',
-    styles:['./login.css'],
-    providers:[LoginService]
+    styleUrls:['login.css','../../css/test.css'],
+    providers:[LoginService],
+    encapsulation:ViewEncapsulation.None
 })
 
 export class LoginComponent implements OnInit {
@@ -23,10 +24,7 @@ export class LoginComponent implements OnInit {
         private alertService: AlertService,private loginService:LoginService) { }
 
     ngOnInit() {
-        // reset login status
         this.authenticationService.logout();
-
-        // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
 
@@ -35,15 +33,13 @@ export class LoginComponent implements OnInit {
         this.authenticationService.login(this.model.username, this.model.password)
             .subscribe(
                 data => {
-                        alert('loged in');
+                    this.loginService.setUserTenantProfile(this.returnUrl,this.router);
                 },
                 error => {
                     this.alertService.error(error);
                     this.loading = false;
                 });
-        
-        
+
+
     }
 }
-
-
